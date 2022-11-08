@@ -36,7 +36,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void aLivingCellWithFewerThanNeighborsDiesByUnderPopulation() {
+    public void aLivingCellWithFewerThanTwoNeighborsDiesByUnderPopulation() {
         var initialPattern = new Seed(LiveCell.in(0, 0));
         var universe = new GameOfLife(initialPattern);
 
