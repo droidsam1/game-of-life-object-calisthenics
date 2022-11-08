@@ -17,6 +17,10 @@ public class GameOfLife {
     }
 
     public void tick() {
-        this.cells = new Cells();
+        this.cells = this.cells.applyRules();
+    }
+
+    public Cell getCellAt(Coordinate coordinate) {
+        return cells.getAt(coordinate);
     }
 }

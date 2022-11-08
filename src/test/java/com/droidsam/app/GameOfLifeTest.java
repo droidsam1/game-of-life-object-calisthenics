@@ -35,4 +35,14 @@ public class GameOfLifeTest {
         Assertions.assertNotEquals(initialPattern.getCells(), universe.getCells());
     }
 
+    @Test
+    public void aLivingCellWithFewerThanNeighborsDiesByUnderPopulation() {
+        var initialPattern = new Seed(LiveCell.in(0, 0));
+        var universe = new GameOfLife(initialPattern);
+
+        universe.tick();
+
+        Assertions.assertInstanceOf(DeadCell.class, universe.getCellAt(Coordinate.of(0, 0)));
+    }
+
 }
