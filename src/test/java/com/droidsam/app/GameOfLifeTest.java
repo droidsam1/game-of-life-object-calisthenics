@@ -25,4 +25,14 @@ public class GameOfLifeTest {
         Assertions.assertEquals(initialPattern.getCells(), universe.getCells());
     }
 
+    @Test
+    public void theUniverseCanStepInTime() {
+        var initialPattern = new Seed(LiveCell.in(0, 0));
+        var universe = new GameOfLife(initialPattern);
+
+        universe.tick();
+
+        Assertions.assertNotEquals(initialPattern.getCells(), universe.getCells());
+    }
+
 }
