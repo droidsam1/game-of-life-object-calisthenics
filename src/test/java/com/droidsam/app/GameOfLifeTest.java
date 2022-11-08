@@ -18,4 +18,11 @@ public class GameOfLifeTest {
         Assertions.assertEquals(initialPattern.getCells(), universe.getCells());
     }
 
+    @Test
+    public void theUniverseCanBeSeededWithAInitialPattern() {
+        var initialPattern = new Seed(LiveCell.in(0, 0), LiveCell.in(1, 1));
+        var universe = new GameOfLife(initialPattern);
+        Assertions.assertEquals(initialPattern.getCells(), universe.getCells());
+    }
+
 }
