@@ -7,14 +7,15 @@ public class GameOfLifeTest {
 
     @Test
     public void theUniverseCanBeCreated() {
-        Assertions.assertNotNull(new GameOfLife());
+        var universe = new GameOfLife();
+        Assertions.assertNotNull(universe);
     }
-
 
     @Test
     public void theUniverseCanBeSeeded() {
-        new GameOfLife(new Seed());
+        var initialPattern = new Seed();
+        var universe = new GameOfLife(initialPattern);
+        Assertions.assertEquals(initialPattern.getCells(), universe.getCells());
     }
-
 
 }

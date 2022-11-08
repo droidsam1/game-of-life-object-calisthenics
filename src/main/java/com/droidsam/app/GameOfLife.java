@@ -7,4 +7,8 @@ public class GameOfLife {
 
     public GameOfLife(Seed seed) {
     }
+
+    public Cells getCells() {
+        return null;
+    }
 }
