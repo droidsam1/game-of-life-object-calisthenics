@@ -19,7 +19,7 @@ public class Cells {
     }
 
     public Cell getAt(Coordinate coordinate) {
-       return Optional.ofNullable(cellGrid.get(coordinate)).orElse(new DeadCell());
+        return Optional.ofNullable(cellGrid.get(coordinate)).orElse(new DeadCell());
     }
 
     public Cells applyRules() {
