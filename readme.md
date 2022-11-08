@@ -7,7 +7,7 @@ Implement _Game of Life_ using object calisthenics plus everything we covered be
 For those no familiar with this game, here is a description adapted from Wikipedia:
 https://en.wikipedia.org/wiki/Conway's_Game_of_Life
 
-The universe ofGame of Life is an infinite, two-dimensional orthogonal grid of square cells,
+The universe of Game of Life is an infinite, two-dimensional orthogonal grid of square cells,
 each of which is in one of two possible states: alive or dead (or populated and unpopulated, respectively).
 Every cell interacts with is eight neighbors, which are the cells that are horizontally, vertically
 or diagonally adjacent. At each step in time, the following transitions occur:
