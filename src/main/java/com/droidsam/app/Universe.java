@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class Universe {
     private final Map<Coordinate, Cell> cellGrid;
 
-    public Universe() {
+    private Universe() {
         this.cellGrid = new HashMap<>();
     }
 
@@ -26,6 +26,10 @@ public class Universe {
         this.cellGrid = cellGrid;
     }
 
+    public static Universe empty() {
+        return new Universe();
+    }
+
     public Cell getAt(Coordinate coordinate) {
         return Optional.ofNullable(cellGrid.get(coordinate)).orElse(DeadCell.in(coordinate));
     }
@@ -33,15 +37,14 @@ public class Universe {
     public Universe applyRules() {
         var newGenerationGrid = new HashMap<Coordinate, Cell>();
 
-        for (Map.Entry<Coordinate, Cell> entry : cellGrid.entrySet()) {
+        if (cellGrid.size() <= 2) {
+            return Universe.empty();
+        }
 
+        for (Map.Entry<Coordinate, Cell> entry : cellGrid.entrySet()) {
             long neighbors = getNumberOfNeighbors(entry.getKey());
             Cell newCellState = (neighbors == 2 || neighbors == 3) ? LiveCell.in(entry.getKey()) : DeadCell.in(entry.getKey());
             newGenerationGrid.put(entry.getKey(), newCellState);
-        }
-
-        if (cellGrid.size() <= 2) {
-            return new Universe();
         }
         return new Universe(newGenerationGrid);
     }

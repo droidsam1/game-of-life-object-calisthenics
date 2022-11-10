@@ -8,7 +8,7 @@ public class GameOfLife {
     private Universe universe;
 
     public GameOfLife() {
-        this.universe = new Universe();
+        this.universe = Universe.empty();
     }
 
     public GameOfLife(Seed seed) {
