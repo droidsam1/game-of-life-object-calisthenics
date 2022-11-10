@@ -12,7 +12,7 @@ public class GameOfLife {
     }
 
     public GameOfLife(Seed seed) {
-        this.universe = new Universe(seed.getInitialPattern());
+        this.universe = Universe.createFrom(seed.getInitialPattern());
     }
 
     public LivingCells getLivingCells() {

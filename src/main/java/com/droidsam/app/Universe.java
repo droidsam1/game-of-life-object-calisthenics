@@ -18,12 +18,12 @@ public class Universe {
         this.cellGrid = new HashMap<>();
     }
 
-    public Universe(LivingCells in) {
-        this.cellGrid = in.stream().collect(Collectors.toMap(Cell::getPosition, Function.identity()));
-    }
-
     private Universe(Map<Coordinate, Cell> cellGrid) {
         this.cellGrid = cellGrid;
+    }
+
+    public static Universe createFrom(LivingCells in) {
+        return new Universe(in.stream().collect(Collectors.toMap(Cell::getPosition, Function.identity())));
     }
 
     public static Universe empty() {
