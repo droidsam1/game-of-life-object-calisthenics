@@ -36,8 +36,28 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void aLivingCellWithFewerThanTwoNeighborsDiesByUnderPopulation() {
+    public void aLivingCellOnlyDiesByUnderPopulation() {
         var initialPattern = new Seed(LiveCell.in(0, 0));
+        var universe = new GameOfLife(initialPattern);
+
+        universe.tick();
+
+        Assertions.assertInstanceOf(DeadCell.class, universe.getCellAt(Coordinate.of(0, 0)));
+    }
+
+    @Test
+    public void twoLivingCellsOnlyDieByUnderPopulation() {
+        var initialPattern = new Seed(LiveCell.in(0, 0), LiveCell.in(0, 1));
+        var universe = new GameOfLife(initialPattern);
+
+        universe.tick();
+
+        Assertions.assertInstanceOf(DeadCell.class, universe.getCellAt(Coordinate.of(0, 0)));
+    }
+
+    @Test
+    public void anyLivingCellFarAwayFromNeighborsDiesByUnderPopulation() {
+        var initialPattern = new Seed(LiveCell.in(0, 0), LiveCell.in(10, 10), LiveCell.in(5, 5));
         var universe = new GameOfLife(initialPattern);
 
         universe.tick();

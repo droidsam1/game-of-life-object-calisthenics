@@ -28,4 +28,14 @@ public class Coordinate {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+    public boolean isNeighbor(Coordinate coordinate) {
+        if (this.equals(coordinate)) {
+            return false;
+        }
+        if (Math.abs(coordinate.x - this.x) <= 1 && coordinate.y == this.y) {
+            return true;
+        }
+        return Math.abs(coordinate.y - this.y) <= 1 && coordinate.x == this.x;
+    }
 }

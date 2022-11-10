@@ -1,19 +1,23 @@
 package com.droidsam.app;
 
 public class LiveCell implements Cell {
-    private final int x;
-    private final int y;
 
-    private LiveCell(int x, int y) {
-        this.x = x;
-        this.y = y;
+
+    private final Coordinate coordinate;
+
+    private LiveCell(Coordinate coordinate) {
+        this.coordinate = coordinate;
     }
 
     public static LiveCell in(int x, int y) {
-        return new LiveCell(x, y);
+        return new LiveCell(Coordinate.of(x, y));
+    }
+
+    public static LiveCell in(Coordinate coordinate) {
+        return new LiveCell(coordinate);
     }
 
     public Coordinate getPosition() {
-        return Coordinate.of(this.x, this.y);
+        return coordinate;
     }
 }
