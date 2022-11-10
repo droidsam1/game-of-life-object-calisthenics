@@ -8,6 +8,7 @@ import com.droidsam.app.cell.LivingCells;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -46,7 +47,36 @@ public class Universe {
             Cell newCellState = (neighbors == 2 || neighbors == 3) ? LiveCell.in(entry.getKey()) : DeadCell.in(entry.getKey());
             newGenerationGrid.put(entry.getKey(), newCellState);
         }
+        processDeadCells(newGenerationGrid);
+
         return new Universe(newGenerationGrid);
+    }
+
+    private void processDeadCells(Map<Coordinate, Cell> newGeneration) {
+
+        for (Coordinate coordinate : getSurroundingDeadCells()) {
+            long neighbors = getNumberOfNeighbors(coordinate);
+            if (neighbors == 3) {
+                newGeneration.put(coordinate, LiveCell.in(coordinate));
+            }
+        }
+
+    }
+
+    private Set<Coordinate> getSurroundingDeadCells() {
+        var coordinatesUp = this.cellGrid.keySet().stream().map(c -> Coordinate.of(c.x, c.y + 1)).collect(Collectors.toSet());
+        var coordinatesDown = this.cellGrid.keySet().stream().map(c -> Coordinate.of(c.x, c.y - 1)).collect(Collectors.toSet());
+        var coordinatesRight = this.cellGrid.keySet().stream().map(c -> Coordinate.of(c.x + 1, c.y)).collect(Collectors.toSet());
+        var coordinatesLeft = this.cellGrid.keySet().stream().map(c -> Coordinate.of(c.x - 1, c.y)).collect(Collectors.toSet());
+
+
+        var surroundings = new java.util.HashSet<Coordinate>();
+        surroundings.addAll(coordinatesUp);
+        surroundings.addAll(coordinatesDown);
+        surroundings.addAll(coordinatesRight);
+        surroundings.addAll(coordinatesLeft);
+        surroundings.removeAll(this.cellGrid.keySet());
+        return surroundings;
     }
 
     private long getNumberOfNeighbors(Coordinate coordinate) {
