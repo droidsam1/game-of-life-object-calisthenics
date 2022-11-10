@@ -37,19 +37,17 @@ public class Universe {
 
     public Universe applyRules() {
         var newGenerationGrid = new HashMap<Coordinate, Cell>();
+        processLiveCells(newGenerationGrid);
+        processDeadCells(newGenerationGrid);
+        return new Universe(newGenerationGrid);
+    }
 
-        if (cellGrid.size() <= 2) {
-            return Universe.empty();
-        }
-
+    private void processLiveCells(HashMap<Coordinate, Cell> newGenerationGrid) {
         for (Map.Entry<Coordinate, Cell> entry : cellGrid.entrySet()) {
             long neighbors = getNumberOfNeighbors(entry.getKey());
             Cell newCellState = (neighbors == 2 || neighbors == 3) ? LiveCell.in(entry.getKey()) : DeadCell.in(entry.getKey());
             newGenerationGrid.put(entry.getKey(), newCellState);
         }
-        processDeadCells(newGenerationGrid);
-
-        return new Universe(newGenerationGrid);
     }
 
     private void processDeadCells(Map<Coordinate, Cell> newGeneration) {
