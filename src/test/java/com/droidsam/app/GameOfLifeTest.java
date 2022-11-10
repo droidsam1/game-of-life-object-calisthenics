@@ -95,6 +95,7 @@ public class GameOfLifeTest {
         universe.tick();
 
         Assertions.assertInstanceOf(DeadCell.class, universe.getCellAt(Coordinate.of(1, 1)));
+        Assertions.assertInstanceOf(DeadCell.class, universe.getCellAt(Coordinate.of(0, 1)));
     }
 
 }
