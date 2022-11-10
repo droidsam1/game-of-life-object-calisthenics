@@ -1,4 +1,4 @@
-package com.droidsam.app;
+package com.droidsam.app.cell;
 
 import java.util.Collection;
 import java.util.stream.Stream;
@@ -26,7 +26,7 @@ public class LivingCells {
         return cells.hashCode();
     }
 
-    public <T> Stream<LiveCell> stream() {
+    public Stream<LiveCell> stream() {
         return cells.stream();
     }
 }

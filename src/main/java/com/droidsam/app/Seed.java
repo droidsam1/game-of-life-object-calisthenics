@@ -1,5 +1,8 @@
 package com.droidsam.app;
 
+import com.droidsam.app.cell.LiveCell;
+import com.droidsam.app.cell.LivingCells;
+
 import java.util.Collection;
 import java.util.List;
 

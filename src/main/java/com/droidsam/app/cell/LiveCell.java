@@ -1,4 +1,6 @@
-package com.droidsam.app;
+package com.droidsam.app.cell;
+
+import com.droidsam.app.Coordinate;
 
 public class LiveCell implements Cell {
 

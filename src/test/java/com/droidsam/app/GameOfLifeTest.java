@@ -1,5 +1,7 @@
 package com.droidsam.app;
 
+import com.droidsam.app.cell.DeadCell;
+import com.droidsam.app.cell.LiveCell;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

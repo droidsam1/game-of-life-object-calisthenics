@@ -1,5 +1,10 @@
 package com.droidsam.app;
 
+import com.droidsam.app.cell.Cell;
+import com.droidsam.app.cell.DeadCell;
+import com.droidsam.app.cell.LiveCell;
+import com.droidsam.app.cell.LivingCells;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

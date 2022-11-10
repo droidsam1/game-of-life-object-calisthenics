@@ -1,5 +1,8 @@
 package com.droidsam.app;
 
+import com.droidsam.app.cell.Cell;
+import com.droidsam.app.cell.LivingCells;
+
 public class GameOfLife {
 
     private Universe universe;
