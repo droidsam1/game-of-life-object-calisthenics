@@ -33,10 +33,7 @@ public class Coordinate {
         if (this.equals(coordinate)) {
             return false;
         }
-        if (Math.abs(coordinate.x - this.x) <= 1 && coordinate.y == this.y) {
-            return true;
-        }
-        return Math.abs(coordinate.y - this.y) <= 1 && coordinate.x == this.x;
+        return Math.abs(coordinate.x - this.x) <= 1 && Math.abs(coordinate.y - this.y) <= 1;
     }
 
     @Override

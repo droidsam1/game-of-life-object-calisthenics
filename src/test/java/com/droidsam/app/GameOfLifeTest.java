@@ -87,4 +87,14 @@ public class GameOfLifeTest {
         Assertions.assertInstanceOf(LiveCell.class, universe.getCellAt(Coordinate.of(1, 1)));
     }
 
+    @Test
+    public void aLivingCellWithFourNeighborsDiesByOverPopulation() {
+        var initialPattern = new Seed(LiveCell.in(1, 1), LiveCell.in(0, 1), LiveCell.in(1, 0), LiveCell.in(1, 2), LiveCell.in(0, 2));
+        var universe = new GameOfLife(initialPattern);
+
+        universe.tick();
+
+        Assertions.assertInstanceOf(DeadCell.class, universe.getCellAt(Coordinate.of(1, 1)));
+    }
+
 }
