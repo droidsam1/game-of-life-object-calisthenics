@@ -15,14 +15,14 @@ public class GameOfLifeTest {
     public void theUniverseCanBeSeeded() {
         var initialPattern = new Seed();
         var universe = new GameOfLife(initialPattern);
-        Assertions.assertEquals(initialPattern.getCells(), universe.getCells());
+        Assertions.assertEquals(initialPattern.getInitialPattern(), universe.getLivingCells());
     }
 
     @Test
     public void theUniverseCanBeSeededWithAInitialPattern() {
         var initialPattern = new Seed(LiveCell.in(0, 0), LiveCell.in(1, 1));
         var universe = new GameOfLife(initialPattern);
-        Assertions.assertEquals(initialPattern.getCells(), universe.getCells());
+        Assertions.assertEquals(initialPattern.getInitialPattern(), universe.getLivingCells());
     }
 
     @Test
@@ -32,7 +32,7 @@ public class GameOfLifeTest {
 
         universe.tick();
 
-        Assertions.assertNotEquals(initialPattern.getCells(), universe.getCells());
+        Assertions.assertNotEquals(initialPattern.getInitialPattern(), universe.getLivingCells());
     }
 
     @Test

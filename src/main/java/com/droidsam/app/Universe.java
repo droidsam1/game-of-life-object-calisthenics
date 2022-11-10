@@ -1,24 +1,23 @@
 package com.droidsam.app;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class Cells {
+public class Universe {
     private final Map<Coordinate, Cell> cellGrid;
 
-    public Cells() {
+    public Universe() {
         this.cellGrid = new HashMap<>();
     }
 
-    public Cells(Cell[] in) {
-        this.cellGrid = Arrays.stream(in).collect(Collectors.toMap(Cell::getPosition, Function.identity()));
+    public Universe(LivingCells in) {
+        this.cellGrid = in.stream().collect(Collectors.toMap(Cell::getPosition, Function.identity()));
     }
 
-    private Cells(Map<Coordinate, Cell> cellGrid) {
+    private Universe(Map<Coordinate, Cell> cellGrid) {
         this.cellGrid = cellGrid;
     }
 
@@ -26,7 +25,7 @@ public class Cells {
         return Optional.ofNullable(cellGrid.get(coordinate)).orElse(DeadCell.in(coordinate));
     }
 
-    public Cells applyRules() {
+    public Universe applyRules() {
         var newGenerationGrid = new HashMap<Coordinate, Cell>();
 
         for (Map.Entry<Coordinate, Cell> entry : cellGrid.entrySet()) {
@@ -37,9 +36,9 @@ public class Cells {
         }
 
         if (cellGrid.size() <= 2) {
-            return new Cells();
+            return new Universe();
         }
-        return new Cells(newGenerationGrid);
+        return new Universe(newGenerationGrid);
     }
 
     private long getNumberOfNeighbors(Coordinate coordinate) {
@@ -48,5 +47,9 @@ public class Cells {
 
     private boolean itsLivingANeighbor(Map.Entry<Coordinate, Cell> entry, Coordinate coordinate) {
         return entry.getKey().isNeighbor(coordinate) && entry.getValue() instanceof LiveCell;
+    }
+
+    public LivingCells getLivingCells() {
+        return new LivingCells(cellGrid.values().stream().filter(LiveCell.class::isInstance).map(LiveCell.class::cast).collect(Collectors.toList()));
     }
 }

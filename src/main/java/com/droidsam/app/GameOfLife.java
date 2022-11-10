@@ -2,25 +2,25 @@ package com.droidsam.app;
 
 public class GameOfLife {
 
-    private Cells cells;
+    private Universe universe;
 
     public GameOfLife() {
-        this.cells = new Cells();
+        this.universe = new Universe();
     }
 
     public GameOfLife(Seed seed) {
-        this.cells = seed.getCells();
+        this.universe = new Universe(seed.getInitialPattern());
     }
 
-    public Cells getCells() {
-        return cells;
+    public LivingCells getLivingCells() {
+        return universe.getLivingCells();
     }
 
     public void tick() {
-        this.cells = this.cells.applyRules();
+        this.universe = this.universe.applyRules();
     }
 
     public Cell getCellAt(Coordinate coordinate) {
-        return cells.getAt(coordinate);
+        return universe.getAt(coordinate);
     }
 }

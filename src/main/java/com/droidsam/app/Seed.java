@@ -1,14 +1,17 @@
 package com.droidsam.app;
 
+import java.util.Collection;
+import java.util.List;
+
 public class Seed {
 
-    private final Cells cells;
+    private final Collection<LiveCell> initialPattern;
 
     public Seed(LiveCell... in) {
-        this.cells = new Cells(in);
+        this.initialPattern = List.of(in);
     }
 
-    public Cells getCells() {
-        return cells;
+    public LivingCells getInitialPattern() {
+        return new LivingCells(initialPattern);
     }
 }
