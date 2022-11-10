@@ -15,7 +15,7 @@ public class DeadCell implements Cell {
 
     @Override
     public Coordinate getPosition() {
-        return null;
+        return coordinate;
     }
 
     @Override
