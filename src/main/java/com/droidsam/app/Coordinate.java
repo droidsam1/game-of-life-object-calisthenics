@@ -38,4 +38,9 @@ public class Coordinate {
         }
         return Math.abs(coordinate.y - this.y) <= 1 && coordinate.x == this.x;
     }
+
+    @Override
+    public String toString() {
+        return "Coordinate{" + "x=" + x + ", y=" + y + '}';
+    }
 }

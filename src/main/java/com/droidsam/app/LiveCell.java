@@ -20,4 +20,9 @@ public class LiveCell implements Cell {
     public Coordinate getPosition() {
         return coordinate;
     }
+
+    @Override
+    public String toString() {
+        return "LiveCell{" + "coordinate=" + coordinate + '}';
+    }
 }

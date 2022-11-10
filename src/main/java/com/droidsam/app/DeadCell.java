@@ -15,4 +15,9 @@ public class DeadCell implements Cell {
     public Coordinate getPosition() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "DeadCell{" + "coordinate=" + coordinate + '}';
+    }
 }
