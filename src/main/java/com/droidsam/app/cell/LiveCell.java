@@ -2,6 +2,8 @@ package com.droidsam.app.cell;
 
 import com.droidsam.app.Coordinate;
 
+import java.util.Objects;
+
 public class LiveCell implements Cell {
 
 
@@ -21,6 +23,19 @@ public class LiveCell implements Cell {
 
     public Coordinate getPosition() {
         return coordinate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LiveCell liveCell = (LiveCell) o;
+        return coordinate.equals(liveCell.coordinate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(coordinate);
     }
 
     @Override

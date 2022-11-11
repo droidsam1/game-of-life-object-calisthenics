@@ -3,6 +3,7 @@ package com.droidsam.app.cell;
 import com.droidsam.app.Coordinate;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -39,7 +40,7 @@ public class LivingCells {
 
         LivingCells that = (LivingCells) o;
 
-        return cells.equals(that.cells);
+        return new HashSet<>(this.cells).equals(new HashSet<>(that.cells));
     }
 
     @Override
