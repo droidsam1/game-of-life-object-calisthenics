@@ -132,4 +132,25 @@ public class GameOfLifeTest {
         Assertions.assertEquals(initialPattern.getInitialPattern(), universe.getLivingCells());
     }
 
+    @Test
+    public void shouldEndWithSameLivingCellsWhenBlinkerPatternIsSeeded() {
+        var initialPattern = PattersFixture.OSCILLATOR_WITH_PERIOD_2;
+        var universe = new GameOfLife(initialPattern);
+
+        universe.tick();
+        universe.tick();
+
+        Assertions.assertEquals(initialPattern.getInitialPattern(), universe.getLivingCells());
+    }
+
+    @Test
+    public void shouldNotEndWithSameLivingCellsWhenBlinkerPatternIsSeededAndOnlyOneTick() {
+        var initialPattern = PattersFixture.OSCILLATOR_WITH_PERIOD_2;
+        var universe = new GameOfLife(initialPattern);
+
+        universe.tick();
+
+        Assertions.assertNotEquals(initialPattern.getInitialPattern(), universe.getLivingCells());
+    }
+
 }
