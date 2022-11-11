@@ -108,4 +108,18 @@ public class GameOfLifeTest {
         Assertions.assertInstanceOf(LiveCell.class, universe.getCellAt(Coordinate.of(0, 0)));
     }
 
+    @Test
+    public void showKeepAliveAllCellsWhenAStillLifesPatternsIsSeeded() {
+        var initialPattern = PattersFixture.STILL_LIFE_BLOCK_PATTERN;
+        var universe = new GameOfLife(initialPattern);
+
+        universe.tick();
+        universe.tick();
+
+        Assertions.assertInstanceOf(LiveCell.class, universe.getCellAt(Coordinate.of(0, 0)));
+        Assertions.assertInstanceOf(LiveCell.class, universe.getCellAt(Coordinate.of(0, 1)));
+        Assertions.assertInstanceOf(LiveCell.class, universe.getCellAt(Coordinate.of(1, 0)));
+        Assertions.assertInstanceOf(LiveCell.class, universe.getCellAt(Coordinate.of(1, 1)));
+    }
+
 }
