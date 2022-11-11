@@ -109,10 +109,23 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void showKeepAliveAllCellsWhenAStillLifesPatternsIsSeeded() {
+    public void showKeepAliveAllCellsWhenBlockPatternIsSeeded() {
         var initialPattern = PattersFixture.STILL_LIFE_BLOCK_PATTERN;
         var universe = new GameOfLife(initialPattern);
 
+        universe.tick();
+        universe.tick();
+        universe.tick();
+
+        Assertions.assertEquals(initialPattern.getInitialPattern(), universe.getLivingCells());
+    }
+
+    @Test
+    public void showKeepAliveAllCellsWhenBeeHivePatternIsSeeded() {
+        var initialPattern = PattersFixture.STILL_LIFE_BEE_HIVE;
+        var universe = new GameOfLife(initialPattern);
+
+        universe.tick();
         universe.tick();
         universe.tick();
 
